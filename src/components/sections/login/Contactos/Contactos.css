@@ -1,8 +1,112 @@
-contactos {
-width: 100%;
-padding: 10px;
+/* Contenedor principal de contactos */
+.contactos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* espacio entre ítems */
+    padding: 1rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-display: flex;
-flex-direction: column;
-gap: 10px;
+/* Título */
+.contactos h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+/* Cada item de contacto */
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+/* Hover sobre el contacto */
+.contact-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Avatar del contacto */
+.contact-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Información del contacto */
+.contact-info {
+    flex: 1;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.contact-phone {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Botones de acción (opcional) */
+.contact-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.contact-actions button {
+    padding: 0.35rem 0.7rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.contact-actions .edit {
+    background-color: #4facfe;
+    color: white;
+}
+
+.contact-actions .edit:hover {
+    background-color: #00c6ff;
+}
+
+.contact-actions .delete {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+.contact-actions .delete:hover {
+    background-color: #ff4c4c;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .contact-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
 }
