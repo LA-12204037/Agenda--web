@@ -1,22 +1,37 @@
-let ItemContacto = (imgContacto, nombre, telefono ) => {
-let div = document.createElement("div");
-div.className = "item-contacto";
+let ItemContacto = (imgContacto, nombre, telefono) => {
+  // Contenedor principal
+  let div = document.createElement("div");
+  div.className = "contact-item";
 
-let etiquetaImg = document.createElement("img");
-etiquetaImg.src = './assets/icons/$[imgContacto}';
+  // Avatar
+  let avatar = document.createElement("div");
+  avatar.className = "contact-avatar";
 
-let etiquetaNombre = document.createElement("p");
-etiquetaNombre. textContent = nombre;
+  let img = document.createElement("img");
+  img.src = `./src/assets/icon/${imgContacto}`;
+  img.alt = nombre;
+  avatar.appendChild(img);
 
-let etiquetaTelefono = document.createElement("p");
-etiquetaTelefono.textContent = telefono;
+  // Información
+  let info = document.createElement("div");
+  info.className = "contact-info";
 
-div.appendChild(etiquetaImg);
-div.appendChild(etiquetaNombre);
-div.appendChild(etiquetaTelefono);
+  let pNombre = document.createElement("p");
+  pNombre.className = "contact-name";
+  pNombre.textContent = nombre;
 
-return div;
+  let pTelefono = document.createElement("p");
+  pTelefono.className = "contact-email";
+  pTelefono.textContent = telefono;
 
+  info.appendChild(pNombre);
+  info.appendChild(pTelefono);
+
+  // Unir todo
+  div.appendChild(avatar);
+  div.appendChild(info);
+
+  return div;
 };
 
 export { ItemContacto };

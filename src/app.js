@@ -1,17 +1,39 @@
 import { Button } from "./components/common/button/Button.js";
 import { Contactos } from "./components/sections/login/Contactos/Contactos.js";
+import { TodoList } from "./components/sections/login/TodoList/TodoList.js";
+import { login } from "./components/sections/login/login.js";
 
-// App
-let app = document.getElementById("app");
+const nav = document.getElementById("nav");
+const container = document.getElementById("container");
 
-// section menů
-let nav = document.getElementById("nav");
-// agregar botones
-nav.appendChild(Button("Agenda", "agenda", "user.svg.svg"));
-nav.appendChild(Button("Crear contacto", "plus", "plus.svg"));
-nav.appendChild(Button("ToDoList", "todoList", "todoList.svg"));
-nav.appendChild(Button("Crear tarea", "plus", "agenda.svg"));
+const clearContainer = () => {
+  container.innerHTML = "";
+};
 
-// section container
-let container = document.getElementById("container");
-container.appendChild(Contactos());
+// Botones
+const btnAgenda = Button("Agenda", "agenda", "user.svg");
+const btnTodo = Button("To Do List", "todoList", "todoList.svg");
+const btnLogin = Button("Login", "login", "agenda.svg");
+
+nav.appendChild(btnAgenda);
+nav.appendChild(btnTodo);
+nav.appendChild(btnLogin);
+
+// Eventos
+btnAgenda.addEventListener("click", () => {
+  clearContainer();
+  container.appendChild(Contactos());
+});
+
+btnTodo.addEventListener("click", () => {
+  clearContainer();
+  container.appendChild(TodoList());
+});
+
+btnLogin.addEventListener("click", () => {
+  clearContainer();
+  container.appendChild(login());
+});
+
+// Vista inicial
+container.appendChild(login());

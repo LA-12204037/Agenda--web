@@ -1,22 +1,28 @@
 let Button = (title, id, img) => {
-let div = document.createElement("div");
-div.id = id;
+  let div = document.createElement("div");
+  div.id = id;
+  div.className = "nav-button";
 
-let divImage = document. createElement("div");
-divImage.className = "button-image";
+  // Contenedor de imagen
+  let divImage = document.createElement("div");
+  divImage.className = "button-image";
 
-let imgIcon = document. createElement("img");
-imgIcon.src = `./assets/icon/${img}`;
-divImage.appendChild(imgIcon);
+  let imgIcon = document.createElement("img");
+  imgIcon.src = `./src/assets/icon/${img}`;
+  imgIcon.alt = title;
 
-let p = document.createElement("p");
-p.className = "button-text";
-p.textContent = title;
+  divImage.appendChild(imgIcon);
 
-div.appendChild(divImage);
-div.appendChild(p);
+  // Texto
+  let p = document.createElement("p");
+  p.className = "button-text";
+  p.textContent = title;
 
-return div;
-}
+  // Unir todo
+  div.appendChild(divImage);
+  div.appendChild(p);
+
+  return div;
+};
+
 export { Button };
-

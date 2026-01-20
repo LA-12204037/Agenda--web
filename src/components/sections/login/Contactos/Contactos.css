@@ -1,8 +1,58 @@
-contactos {
-width: 100%;
-padding: 10px;
+/* Sección contactos */
+.contactos {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 
-display: flex;
-flex-direction: column;
-gap: 10px;
+  background-color: #f9fafc;
+  border-radius: 10px;
+}
+
+/* Título */
+.contactos h2 {
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #4facfe;
+  padding-bottom: 4px;
+}
+
+/* Cada contacto (hereda del ItemContacto) */
+.item-contacto {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 0.8rem;
+
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.item-contacto:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagen */
+.item-contacto img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Nombre */
+.item-contacto p:first-of-type {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Teléfono */
+.item-contacto p:last-of-type {
+  color: #666;
+  font-size: 0.9rem;
 }

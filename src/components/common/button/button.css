@@ -1,60 +1,48 @@
 /* Contenedor general de botones */
-#nav div {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;           /* Espacio entre icono y texto */
-    padding: 0.5rem 1rem;  /* Espaciado interno */
-    margin: 5px 0;         /* Espaciado entre botones */
-    border-radius: 6px;    /* Bordes redondeados */
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
-    
-    background-color: #f5f5f5;  /* Gris muy claro */
-    color: #333;                 /* Texto oscuro */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 500;
-    font-size: 0.95rem;
-    user-select: none;
-    border: 1px solid #e0e0e0;  /* Borde sutil */
+#nav .nav-button {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1rem;
+  margin: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  background-color: #f5f7fa;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+
+  border: 1px solid #e0e0e0;
+  transition: background 0.25s ease, transform 0.1s ease, box-shadow 0.2s ease;
 }
 
-/* Hover y click */
-#nav div:hover {
-    background-color: #e0e0e0; /* Cambio sutil al pasar el mouse */
-    transform: scale(1.02);    /* Pequeño “pop” */
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+/* Hover */
+#nav .nav-button:hover {
+  background-color: #e4ecff;
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
-#nav div:active {
-    transform: scale(0.98); /* Feedback al click */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+/* Click */
+#nav .nav-button:active {
+  transform: scale(0.98);
 }
 
-/* Imagen del botón */
+/* Imagen */
 .button-image img {
-    width: 18px;
-    height: 18px;
-    object-fit: contain;
+  width: 20px;
+  height: 20px;
 }
 
-/* Texto del botón */
+/* Texto */
 .button-text {
-    font-size: 0.95rem;
-    color: #333;
+  color: #333;
 }
 
-/* Diferentes tipos de botón por ID (opcional) */
-#agenda {
-    background-color: #f5f5f5;
-    color: #333;
-}
-
-#plus {
-    background-color: #f5f5f5;
-    color: #333;
-}
-
-#todoList {
-    background-color: #f5f5f5;
-    color: #333;
+/* Botón activo (opcional si luego quieres marcarlo) */
+.nav-button.active {
+  background-color: #4facfe;
+  color: white;
 }

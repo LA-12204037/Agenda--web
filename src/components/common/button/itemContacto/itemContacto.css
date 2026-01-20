@@ -1,0 +1,46 @@
+/* Contenedor principal del contacto */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.6rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+/* Hover */
+.contact-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Avatar */
+.contact-avatar img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Información */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Nombre */
+.contact-name {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Teléfono */
+.contact-email {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+

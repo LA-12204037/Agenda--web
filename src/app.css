@@ -1,27 +1,46 @@
-/* Reset básico */
+/* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Contenedor principal */
+/* App layout */
 #app {
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 300px 1fr; /* 300px para nav, resto para container */
-    gap: 10px;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  background: #f0f2f5;
 }
 
-/* Barra de navegación */
+/* NAV */
 #nav {
-    height: 100vh;
-    border: 1px solid #000; /* corregido */
+  background: #ffffff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-right: 1px solid #ddd;
 }
 
-/* Contenedor de contenido */
+/* CONTENIDO */
 #container {
-    height: 100vh;
-    border: 1px solid #000; /* corregido */
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #app {
+    grid-template-columns: 1fr;
+  }
+
+  #nav {
+    flex-direction: row;
+    justify-content: space-around;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
 }

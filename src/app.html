@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi App</title>
-    <link rel="stylesheet" href="app.css">
-    <link rel="stylesheet" href="components/common/button/button.css"> <!-- Aquí se llama tu button.css -->
-    <link rel="stylesheet" href="components/common/itemContacto/itemContaco.css">
-     <link rel="stylesheet" href="components/sections/Contactos/Contactos.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda Web</title>
+
+  <!-- CSS base -->
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="app.css">
+
+  <!-- Componentes comunes -->
+  <link rel="stylesheet" href="components/common/button/button.css">
+  <link rel="stylesheet" href="components/common/itemContacto/itemContacto.css">
+
+  <!-- Secciones -->
+  <link rel="stylesheet" href="components/sections/login/login.css">
+  <link rel="stylesheet" href="components/sections/Contactos/Contactos.css">
+  <link rel="stylesheet" href="components/sections/TodoList/TodoList.css">
 </head>
+
 <body>
-    <main id="app">
-        <nav id="nav"></nav>
-        <section id="container"></section>
-    </main>
-    <script src="app.js" type="module"></script>
+
+  <main id="app">
+    <!-- Menú lateral -->
+    <nav id="nav"></nav>
+
+    <!-- Contenido dinámico -->
+    <section id="container"></section>
+  </main>
+
+  <!-- JS -->
+  <script src="index.js" type="module"></script>
 </body>
 </html>
