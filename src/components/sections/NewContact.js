@@ -1,29 +1,57 @@
-import "./NewContact.css";
-import { saveContactsToStorage, getContactsFromStorage } from "./localStorage/localStorage.js";
+
+
+import { getContactsFromStorage, saveContactsToStorage } from "../sections/localStorage/localStorage.js";
 
 function FormContacto() {
-    const div = document.createElement("div");
-    div.className = "new-contact";
+    const form = document.createElement("form");
+    form.className = "form-contacto";
 
-    div.innerHTML = `
-        <h2>Nuevo Contacto</h2>
-        <input placeholder="Nombre" id="nombre">
-        <input placeholder="Teléfono" id="telefono">
-        <button>Guardar</button>
-    `;
+    const inputNombre = document.createElement("input");
+    inputNombre.type = "text";
+    inputNombre.placeholder = "Nombre";
+    inputNombre.required = true;
 
-    div.querySelector("button").onclick = () => {
-        const nombre = div.querySelector("#nombre").value;
-        const telefono = div.querySelector("#telefono").value;
+    const inputTelefono = document.createElement("input");
+    inputTelefono.type = "tel";
+    inputTelefono.placeholder = "Teléfono";
+    inputTelefono.required = true;
 
-        const contactos = getContactsFromStorage();
-        contactos.push({ nombre, telefono });
+    const btnGuardar = document.createElement("button");
+    btnGuardar.textContent = "Guardar";
+    btnGuardar.type = "submit";
+
+    form.appendChild(inputNombre);
+    form.appendChild(inputTelefono);
+    form.appendChild(btnGuardar);
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+       
+        let contactos = getContactsFromStorage();
+
+        let nuevoContacto = {
+            nombre: inputNombre.value,
+            telefono: inputTelefono.value
+        };
+
+  
+        contactos.push(nuevoContacto);
         saveContactsToStorage(contactos);
 
-        alert("Contacto guardado");
-    };
 
-    return div;
+        // Se actuliza cuando se agrega un nuevo contacto
+        let container = document.getElementById("container");
+       
+        import("./Contactos.js").then(module => {
+            container.appendChild(module.Contactos());
+        });
+
+        form.reset();
+        alert("Contacto guardado ");
+    });
+
+    return form;
 }
 
 export { FormContacto };

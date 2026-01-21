@@ -1,29 +1,25 @@
 function login() {
-    const section = document.createElement("section");
-    section.className = "login-section";
+
+    const loginSection = document.createElement("section");
+    loginSection.classList.add("login-section");
 
     const h3 = document.createElement("h3");
     h3.textContent = "Login";
 
     const user = document.createElement("input");
+    user.type = "text";
     user.placeholder = "Usuario";
-    user.className = "login-input";
 
-    const pass = document.createElement("input");
-    pass.type = "password";
-    pass.placeholder = "Contraseña";
-    pass.className = "login-input";
+    const password = document.createElement("input");
+    password.type = "password";
+    password.placeholder = "Password";
 
     const button = document.createElement("button");
-    button.textContent = "Entrar";
-    button.className = "login-button";
+    button.textContent = "Iniciar Sesión";
 
-    button.addEventListener("click", () => {
-        window.location.href = "app.html";
-    });
+    loginSection.append(h3, user, password, button);
 
-    section.append(h3, user, pass, button);
-    return section;
+    return loginSection;
 }
 
-export { login };
+export default login;

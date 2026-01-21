@@ -1,7 +1,8 @@
+
 const TODO_STORAGE_KEY = "todo_list";
 
-function guardarTarea(tareas) {
-    localStorage.setItem(TODO_STORAGE_KEY, JSON.stringify(tareas));
+function guardarTarea(tasks) {
+    localStorage.setItem(TODO_STORAGE_KEY, JSON.stringify(tasks));
 }
 
 function obtenerTarea() {

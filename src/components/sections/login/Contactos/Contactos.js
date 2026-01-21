@@ -1,56 +1,62 @@
-import "./Contactos.css";
 
-import { ItemContacto } from "../../../common/button/itemContacto/ItemContacto.js";
+import { ItemContacto } from "../../../../components/common/button/itemContacto/ItemContacto.js";
+
 import { getContactsFromStorage, saveContactsToStorage } from "../../localStorage/localStorage.js";
-import { DB_CONTACTOS } from "./DB.js";
 
-function Contactos() {
-    const section = document.createElement("section");
-    section.className = "contactos";
 
-    const h2 = document.createElement("h2");
+
+let Contactos = () => {
+    let sectionContactos = document.createElement("section");
+    sectionContactos.className = "contactos";
+
+    let h2 = document.createElement("h2");
     h2.textContent = "Contactos";
-    section.appendChild(h2);
+    sectionContactos.appendChild(h2);
 
     let contactos = getContactsFromStorage();
 
-    if (contactos.length === 0) {
-        saveContactsToStorage(DB_CONTACTOS);
-        contactos = DB_CONTACTOS;
-    }
-
-    contactos.forEach((c, i) => {
+    contactos.forEach((contact, index) => {
         const fila = document.createElement("div");
         fila.className = "fila-contacto";
 
-        const item = ItemContacto("./src/assets/icon/user2.svg", c.nombre, c.telefono);
+        // Componente del contacto
+        const item = ItemContacto("user2.svg", contact.nombre, contact.telefono);
 
-        const chk = document.createElement("input");
-        chk.type = "checkbox";
+        // Checkbox
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
 
-        const btn = document.createElement("button");
-        btn.textContent = "Borrar";
-        btn.disabled = true;
+        // Botón borrar
+        const btnBorrar = document.createElement("button");
+        btnBorrar.textContent = "Borrar";
+        btnBorrar.className = "btn-borrar";
+        btnBorrar.disabled = true;
 
-        chk.onchange = () => {
-            btn.disabled = !chk.checked;
-            fila.classList.toggle("seleccionado", chk.checked);
-        };
+        checkbox.addEventListener("change", () => {
+            btnBorrar.disabled = !checkbox.checked;
+            fila.classList.toggle("seleccionado", checkbox.checked);
+        });
 
-        btn.onclick = () => {
-            contactos.splice(i, 1);
+        btnBorrar.addEventListener("click", () => {
+            contactos.splice(index, 1);
             saveContactsToStorage(contactos);
-            section.replaceWith(Contactos());
-        };
 
+            // Recargar contactos
+            const container = document.getElementById("container");
+            container.innerHTML = "";
+            container.appendChild(Contactos());
+        });
+
+        // Acciones (checkbox + borrar)
         const acciones = document.createElement("div");
-        acciones.append(chk, btn);
+        acciones.className = "acciones-contacto";
+        acciones.append(checkbox, btnBorrar);
 
         fila.append(item, acciones);
-        section.appendChild(fila);
+        sectionContactos.appendChild(fila);
     });
 
-    return section;
-}
+    return sectionContactos;
+};
 
 export { Contactos };

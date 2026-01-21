@@ -1,18 +1,22 @@
-import "./button.css";
+let Button = (title, id, img) => {
+let div = document.createElement("div");
+div.id = id;
 
-function Button(texto, id, icono) {
-    const btn = document.createElement("button");
-    btn.className = "btn-menu";
-    btn.id = id;
+let divImage = document. createElement("div");
+divImage.className = "button-image";
 
-    const img = document.createElement("img");
-    img.src = icono;
+let imgIcon = document. createElement("img");
+ imgIcon.src = `./assets/icon/${img}`;
+divImage.appendChild(imgIcon);
 
-    const span = document.createElement("span");
-    span.textContent = texto;
+let p = document.createElement("p");
+p.className = "button-text";
+p.textContent = title;
 
-    btn.append(img, span);
-    return btn;
+div.appendChild(divImage);
+div.appendChild(p);
+
+return div;
 }
-
 export { Button };
+

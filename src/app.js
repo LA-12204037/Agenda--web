@@ -1,41 +1,71 @@
-import "./app.css";
-
-// COMPONENTES
 import { Button } from "./components/common/button/Button.js";
 import { Contactos } from "./components/sections/login/Contactos/Contactos.js";
-import { FormContacto } from "./components/sections/NewContact.js";
-import { ToDoList } from "./components/sections/toDoList/toDoList.js";
-import { CrearTarea } from "./components/sections/tareas/crearTarea.js";
+ import { FormContacto  } from "./components/sections/NewContact.js";
+import { ToDoList   } from "./components/sections/toDoList/toDoList.js";
+import { CrearTarea   } from "./components/sections/tareas/crearTarea.js";
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
-    const root = document.getElementById("root");
+    // App
+    let app = document.getElementById("app");
 
-    root.innerHTML = `
-        <main id="app">
-            <nav id="nav"></nav>
-            <section id="container"></section>
-        </main>
-    `;
+    // section menú
+    let nav = document.getElementById("nav");
 
-    const nav = document.getElementById("nav");
-    const container = document.getElementById("container");
+    // Crear botones
+    nav.appendChild(Button("Agenda", "agenda", "user.svg.svg"));
+    nav.appendChild(Button("Crear contacto", "crear-contacto", "plus.svg"));
+    nav.appendChild(Button("ToDoList", "todoList", "todoList.svg"));
+    nav.appendChild(Button("Crear tarea", "crear-tarea", "agenda.svg"));
 
-    const btnAgenda = Button("Agenda", "agenda", "./src/assets/icon/user.svg");
-    const btnNuevoContacto = Button("Crear contacto", "crear-contacto", "./src/assets/icon/plus.svg");
-    const btnTodo = Button("ToDo List", "todo", "./src/assets/icon/todoList.svg");
-    const btnCrearTarea = Button("Crear tarea", "crear-tarea", "./src/assets/icon/agenda.svg");
+    // Contenedor principal
+    let container = document.getElementById("container");
+    container.appendChild(Contactos());
 
-    nav.append(btnAgenda, btnNuevoContacto, btnTodo, btnCrearTarea);
-
-    function mostrar(componente) {
+    // Función para cambiar secciones
+    function mostrarSeccion(seccion) {
         container.innerHTML = "";
-        container.appendChild(componente);
+        container.appendChild(seccion);
     }
 
-    mostrar(Contactos());
+    // Eventos de botones
+    document.getElementById("agenda").addEventListener("click", () => {
+        mostrarSeccion(Contactos());
+    });
 
-    document.getElementById("agenda").onclick = () => mostrar(Contactos());
-    document.getElementById("crear-contacto").onclick = () => mostrar(FormContacto());
-    document.getElementById("todo").onclick = () => mostrar(ToDoList());
-    document.getElementById("crear-tarea").onclick = () => mostrar(CrearTarea());
+    document.getElementById("crear-contacto").addEventListener("click", () => {
+        mostrarSeccion(FormContacto());
+    });
+
+    document.getElementById("todoList").addEventListener("click", () => {
+        mostrarSeccion(ToDoList());
+    });
+
+    document.getElementById("crear-tarea").addEventListener("click", () => {
+        mostrarSeccion(CrearTarea());
+    });
+    
+
 });
+
+
+
+/*async function tarea() {
+
+  try {
+    let data = await fetch ("https://jsonplaceholder.typicode.com/posts");
+    let r = await data.json();
+    console.log(r);
+
+  } catch (error) {
+    console.log(error);
+
+  }
+  
+}
+
+tarea();
+
+console.log("Comletado");
+*/

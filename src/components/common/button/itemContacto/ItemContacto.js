@@ -1,25 +1,22 @@
-import "./itemContacto.css";
+let ItemContacto = (imgContacto, nombre, telefono ) => {
+let div = document.createElement("div");
+div.className = "item-contacto";
 
-function ItemContacto(icono, nombre, telefono) {
-    const div = document.createElement("div");
-    div.className = "item-contacto";
+let etiquetaImg = document.createElement("img");
+ etiquetaImg.src = `./assets/icon/${imgContacto}`;;
 
-    const img = document.createElement("img");
-    img.src = icono;
+let etiquetaNombre = document.createElement("p");
+etiquetaNombre. textContent = nombre;
 
-    const info = document.createElement("div");
-    info.className = "info";
+let etiquetaTelefono = document.createElement("p");
+etiquetaTelefono.textContent = telefono;
 
-    const strong = document.createElement("strong");
-    strong.textContent = nombre;
+div.appendChild(etiquetaImg);
+div.appendChild(etiquetaNombre);
+div.appendChild(etiquetaTelefono);
 
-    const span = document.createElement("span");
-    span.textContent = telefono;
+return div;
 
-    info.append(strong, span);
-    div.append(img, info);
-
-    return div;
-}
+};
 
 export { ItemContacto };
