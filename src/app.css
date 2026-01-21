@@ -1,46 +1,38 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* App layout */
+/* Layout principal */
 #app {
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  background: #f0f2f5;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+
+    /* Fondo general */
+    background: linear-gradient(135deg, #667eea, #764ba2);
 }
 
-/* NAV */
+/* Navegación lateral */
 #nav {
-  background: #ffffff;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  border-right: 1px solid #ddd;
+    padding: 20px;
+
+    /* Fondo glassmorphism */
+    background: rgba(255, 255, 255, 0.18);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* Safari iOS */
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    /* Detalles visuales */
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-/* CONTENIDO */
+/* Contenido principal */
 #container {
-  padding: 1.5rem;
-  overflow-y: auto;
-}
+    padding: 30px;
 
-/* Responsive */
-@media (max-width: 768px) {
-  #app {
-    grid-template-columns: 1fr;
-  }
+    overflow-y: auto;
 
-  #nav {
-    flex-direction: row;
-    justify-content: space-around;
-    border-right: none;
-    border-bottom: 1px solid #ddd;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }

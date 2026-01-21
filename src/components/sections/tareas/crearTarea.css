@@ -1,0 +1,46 @@
+.form-tarea {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 420px;
+    width: 100%;
+    padding: 24px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+
+.form-tarea h2 {
+    text-align: center;
+    color: #333;
+}
+
+.form-tarea input,
+.form-tarea select {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+.form-tarea input:focus,
+.form-tarea select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-tarea button {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.form-tarea button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}

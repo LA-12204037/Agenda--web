@@ -1,8 +1,7 @@
-let ContactList = [
-    {nombre: "Juan", telefono: "12345678"},
-    {nombre: "Maria", telefono: "12345678"},
-    {nombre: "Pedro ", telefono: "12345678"}
+const DB_CONTACTOS = [
+    { nombre: "Juan", telefono: "12345678" },
+    { nombre: "Maria", telefono: "87654321" },
+    { nombre: "Pedro", telefono: "45678912" }
 ];
 
-export {ContactList};
-
+export { DB_CONTACTOS };

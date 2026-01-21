@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agenda Web</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Web</title>
 
-  <!-- CSS base -->
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="app.css">
+    <!-- CSS BASE -->
+    <link rel="stylesheet" href="./app.css">
 
-  <!-- Componentes comunes -->
-  <link rel="stylesheet" href="components/common/button/button.css">
-  <link rel="stylesheet" href="components/common/itemContacto/itemContacto.css">
+    <!-- BUTTON -->
+    <link rel="stylesheet" href="./components/common/button/button.css">
+    <link rel="stylesheet" href="./components/common/button/itemContacto/itemContacto.css">
 
-  <!-- Secciones -->
-  <link rel="stylesheet" href="components/sections/login/login.css">
-  <link rel="stylesheet" href="components/sections/Contactos/Contactos.css">
-  <link rel="stylesheet" href="components/sections/TodoList/TodoList.css">
+    <!-- SECTIONS -->
+    <link rel="stylesheet" href="./components/sections/login/login.css">
+    <link rel="stylesheet" href="./components/sections/login/Contactos/Contactos.css">
+
+    <link rel="stylesheet" href="./components/sections/tareas/crearTarea.css">
+    <link rel="stylesheet" href="./components/sections/toDoList/toDoList.css">
+
+    <link rel="stylesheet" href="./components/sections/NewContact.css">
 </head>
 
 <body>
+    <main id="app">
+        <nav id="nav"></nav>
+        <section id="container"></section>
+    </main>
 
-  <main id="app">
-    <!-- Menú lateral -->
-    <nav id="nav"></nav>
-
-    <!-- Contenido dinámico -->
-    <section id="container"></section>
-  </main>
-
-  <!-- JS -->
-  <script src="index.js" type="module"></script>
+    <script type="module" src="./app.js"></script>
 </body>
 </html>

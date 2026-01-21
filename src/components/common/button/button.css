@@ -1,48 +1,25 @@
-/* Contenedor general de botones */
-#nav .nav-button {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.7rem 1rem;
-  margin: 6px;
-  border-radius: 8px;
-  cursor: pointer;
+.btn-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 10px;
 
-  background-color: #f5f7fa;
-  color: #333;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 500;
-  font-size: 0.95rem;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
 
-  border: 1px solid #e0e0e0;
-  transition: background 0.25s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    transition: background 0.2s, transform 0.2s;
 }
 
-/* Hover */
-#nav .nav-button:hover {
-  background-color: #e4ecff;
-  transform: scale(1.03);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+.btn-menu img {
+    width: 22px;
+    height: 22px;
 }
 
-/* Click */
-#nav .nav-button:active {
-  transform: scale(0.98);
-}
-
-/* Imagen */
-.button-image img {
-  width: 20px;
-  height: 20px;
-}
-
-/* Texto */
-.button-text {
-  color: #333;
-}
-
-/* Botón activo (opcional si luego quieres marcarlo) */
-.nav-button.active {
-  background-color: #4facfe;
-  color: white;
+.btn-menu:hover {
+    background: rgba(255,255,255,0.35);
+    transform: translateX(4px);
 }

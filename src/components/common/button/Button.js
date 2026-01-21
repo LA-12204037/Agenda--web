@@ -1,28 +1,18 @@
-let Button = (title, id, img) => {
-  let div = document.createElement("div");
-  div.id = id;
-  div.className = "nav-button";
+import "./button.css";
 
-  // Contenedor de imagen
-  let divImage = document.createElement("div");
-  divImage.className = "button-image";
+function Button(texto, id, icono) {
+    const btn = document.createElement("button");
+    btn.className = "btn-menu";
+    btn.id = id;
 
-  let imgIcon = document.createElement("img");
-  imgIcon.src = `./src/assets/icon/${img}`;
-  imgIcon.alt = title;
+    const img = document.createElement("img");
+    img.src = icono;
 
-  divImage.appendChild(imgIcon);
+    const span = document.createElement("span");
+    span.textContent = texto;
 
-  // Texto
-  let p = document.createElement("p");
-  p.className = "button-text";
-  p.textContent = title;
-
-  // Unir todo
-  div.appendChild(divImage);
-  div.appendChild(p);
-
-  return div;
-};
+    btn.append(img, span);
+    return btn;
+}
 
 export { Button };

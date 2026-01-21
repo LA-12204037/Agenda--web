@@ -1,0 +1,81 @@
+.todo-list {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.todo-list h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.tarea {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tarea:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(0,0,0,0.25);
+}
+
+.tarea.urgente {
+    border-left: 6px solid #e63946;
+}
+
+.tarea.tiempo {
+    border-left: 6px solid #457b9d;
+}
+
+.tarea input[type="checkbox"] {
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+.tarea strong {
+    flex: 1;
+    color: #333;
+    font-size: 15px;
+}
+
+.tarea span {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.08);
+}
+
+.btn-borrar {
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #e63946;
+    color: white;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.btn-borrar:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn-borrar:not(:disabled):hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.tarea.seleccionada {
+    opacity: 0.6;
+    text-decoration: line-through;
+}

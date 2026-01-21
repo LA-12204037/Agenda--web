@@ -1,37 +1,25 @@
-let ItemContacto = (imgContacto, nombre, telefono) => {
-  // Contenedor principal
-  let div = document.createElement("div");
-  div.className = "contact-item";
+import "./itemContacto.css";
 
-  // Avatar
-  let avatar = document.createElement("div");
-  avatar.className = "contact-avatar";
+function ItemContacto(icono, nombre, telefono) {
+    const div = document.createElement("div");
+    div.className = "item-contacto";
 
-  let img = document.createElement("img");
-  img.src = `./src/assets/icon/${imgContacto}`;
-  img.alt = nombre;
-  avatar.appendChild(img);
+    const img = document.createElement("img");
+    img.src = icono;
 
-  // Información
-  let info = document.createElement("div");
-  info.className = "contact-info";
+    const info = document.createElement("div");
+    info.className = "info";
 
-  let pNombre = document.createElement("p");
-  pNombre.className = "contact-name";
-  pNombre.textContent = nombre;
+    const strong = document.createElement("strong");
+    strong.textContent = nombre;
 
-  let pTelefono = document.createElement("p");
-  pTelefono.className = "contact-email";
-  pTelefono.textContent = telefono;
+    const span = document.createElement("span");
+    span.textContent = telefono;
 
-  info.appendChild(pNombre);
-  info.appendChild(pTelefono);
+    info.append(strong, span);
+    div.append(img, info);
 
-  // Unir todo
-  div.appendChild(avatar);
-  div.appendChild(info);
-
-  return div;
-};
+    return div;
+}
 
 export { ItemContacto };
