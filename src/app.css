@@ -12,17 +12,20 @@
    LAYOUT PRINCIPAL
 ========================= */
 #app {
-    height: 100vh;
+    min-height: 100vh;
     display: grid;
     grid-template-columns: 260px 1fr;
 
-    /* FONDO GLOBAL (LOGIN + APP) */
-   background-image: url("./assets/icon/bg.jpg");
+    /* FONDO GLOBAL */
+    background-image: url("./assets/icon/bg.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
+/* =========================
+   BOTÓN MENÚ / DETALLE
+========================= */
 .btn-menu {
     background: none;
     border: none;
@@ -34,16 +37,16 @@
     margin-top: 8px;
     padding: 10px;
     border-radius: 10px;
- backdrop-filter: blur(10px);
--webkit-backdrop-filter: blur(10px);
 
-   
+    background: rgba(255,255,255,0.65);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
     font-size: 14px;
 }
 
-
 /* =========================
-   MODO LOGIN (pantalla inicial)
+   MODO LOGIN
 ========================= */
 .app-login {
     grid-template-columns: 1fr;
@@ -65,8 +68,8 @@
 #nav {
     padding: 20px;
     background: rgba(255, 255, 255, 0.35);
-    backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
 
     display: flex;
     flex-direction: column;
@@ -88,7 +91,7 @@
 }
 
 /* =========================
-   TARJETA GLASS (LOGIN, FORM, ETC)
+   TARJETA GLASS
 ========================= */
 .glass-card {
     width: 100%;
@@ -96,8 +99,8 @@
     padding: 28px;
 
     background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
 
     border-radius: 20px;
     border: 1px solid rgba(0, 0, 0, 0.15);
@@ -141,7 +144,6 @@
 
     font-size: 16px;
     cursor: pointer;
-
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -165,46 +167,114 @@
 }
 
 /* =========================
-   RESPONSIVE
+   RESPONSIVE 📱
 ========================= */
 @media (max-width: 768px) {
+
     #app {
         grid-template-columns: 1fr;
     }
 
+    /* NAV ABAJO */
     #nav {
         flex-direction: row;
         justify-content: space-around;
+        align-items: center;
+
+        position: sticky;
+        bottom: 0;
+        z-index: 10;
+
         border-right: none;
-        border-bottom: 1px solid rgba(0,0,0,0.15);
+        border-bottom: none;
+        border-top: 1px solid rgba(0,0,0,0.15);
     }
 
     #container {
+        padding: 16px;
+        align-items: stretch;
+    }
+
+    .glass-card {
+        max-width: 100%;
         padding: 20px;
     }
 
     /* ===== TO DO LIST ===== */
+    .tarea {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
 
-.tarea {
-    padding: 12px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+        padding: 12px;
+        border-radius: 12px;
 
-    background: rgba(255,255,255,0.6);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-}
+        background: rgba(255,255,255,0.6);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
 
-.tarea.vencida {
-    border-left: 6px solid red;
-    background: rgba(255, 0, 0, 0.08);
-}
+    .tarea.vencida {
+        border-left: 6px solid red;
+        background: rgba(255, 0, 0, 0.08);
+    }
 
-.tarea.completada {
-    text-decoration: line-through;
-    opacity: 0.6;
+    .tarea.completada {
+        text-decoration: line-through;
+        opacity: 0.6;
+    }
+
+    /* =========================
+   RESPONSIVE CELULAR
+========================= */
+@media (max-width: 768px) {
+
+    /* APP EN UNA COLUMNA */
+    #app {
+        grid-template-columns: 1fr;
+        min-height: 100vh;
+    }
+
+    /* NAV ARRIBA */
+    #nav {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        padding: 12px;
+        gap: 8px;
+
+        border-right: none;
+        border-bottom: 1px solid rgba(0,0,0,0.15);
+    }
+
+    /* CONTENEDOR */
+    #container {
+        padding: 16px;
+        align-items: stretch;
+    }
+
+    /* TARJETAS */
+    .glass-card {
+        max-width: 100%;
+    }
+
+    /* CONTACTOS */
+    .fila-contacto {
+        width: 100%;
+    }
+
+    /* ITEM CONTACTO */
+    .item-contacto {
+        width: 100%;
+    }
+
+    /* TO DO */
+    .tarea {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
 }
 
 }

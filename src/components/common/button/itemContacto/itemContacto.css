@@ -15,18 +15,43 @@
     animation: fadeIn 0.4s ease forwards;
 }
 
+/* ICONO */
 .item-contacto img {
     width: 42px;
     height: 42px;
     border-radius: 50%;
     background: rgba(255,255,255,0.3);
     padding: 6px;
+    flex-shrink: 0;
 }
 
+/* TEXTO */
 .item-contacto p {
     font-size: 15px;
+    line-height: 1.3;
+    word-break: break-word;
 }
 
+/* =========================
+   RESPONSIVE CONTACTOS
+========================= */
+@media (max-width: 600px) {
+    .item-contacto {
+        padding: 12px 14px;
+        gap: 10px;
+    }
+
+    .item-contacto img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .item-contacto p {
+        font-size: 14px;
+    }
+}
+
+/* ANIMACIÓN */
 @keyframes fadeIn {
     from {
         opacity: 0;
