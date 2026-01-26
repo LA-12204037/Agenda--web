@@ -1,10 +1,9 @@
+import { getContactsFromStorage, saveContactsToStorage } from "./localStorage/localStorage.js";
+import { Contactos } from "./login/Contactos/Contactos.js";
 
-
-import { getContactsFromStorage, saveContactsToStorage } from "../sections/localStorage/localStorage.js";
-
-function FormContacto() {
+function FormContacto(contacto = null, index = null) {
     const form = document.createElement("form");
-    form.className = "form-contacto";
+    form.className = "form-contacto glass-card";
 
     const inputNombre = document.createElement("input");
     inputNombre.type = "text";
@@ -16,39 +15,42 @@ function FormContacto() {
     inputTelefono.placeholder = "Teléfono";
     inputTelefono.required = true;
 
-    const btnGuardar = document.createElement("button");
-    btnGuardar.textContent = "Guardar";
-    btnGuardar.type = "submit";
+    // 👉 SI VIENE DE EDITAR, CARGAMOS LOS DATOS
+    if (contacto) {
+        inputNombre.value = contacto.nombre;
+        inputTelefono.value = contacto.telefono;
+    }
 
-    form.appendChild(inputNombre);
-    form.appendChild(inputTelefono);
-    form.appendChild(btnGuardar);
+    const btnGuardar = document.createElement("button");
+    btnGuardar.type = "submit";
+    btnGuardar.textContent = contacto ? "Actualizar" : "Guardar";
+
+    form.append(inputNombre, inputTelefono, btnGuardar);
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-       
-        let contactos = getContactsFromStorage();
+        const contactos = getContactsFromStorage();
 
-        let nuevoContacto = {
-            nombre: inputNombre.value,
-            telefono: inputTelefono.value
-        };
+        if (contacto !== null && index !== null) {
+            // ✏️ EDITAR CONTACTO
+            contactos[index].nombre = inputNombre.value;
+            contactos[index].telefono = inputTelefono.value;
+        } else {
+            // ➕ NUEVO CONTACTO
+            contactos.push({
+                nombre: inputNombre.value,
+                telefono: inputTelefono.value,
+                favorito: false
+            });
+        }
 
-  
-        contactos.push(nuevoContacto);
         saveContactsToStorage(contactos);
 
-
-        // Se actuliza cuando se agrega un nuevo contacto
-        let container = document.getElementById("container");
-       
-        import("./Contactos.js").then(module => {
-            container.appendChild(module.Contactos());
-        });
-
-        form.reset();
-        alert("Contacto guardado ");
+        // 🔁 volver a contactos
+        const container = document.getElementById("container");
+        container.innerHTML = "";
+        container.appendChild(Contactos());
     });
 
     return form;

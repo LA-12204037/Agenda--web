@@ -1,20 +1,27 @@
-// Clave para almacenar contactos en LocalStorage
-const LOCAL_STORAGE_KEY = 'agenda_telefonica';
+import { contactosIniciales } from "../login/Contactos/contactosIniciales.js";
 
-/**
- * Guarda la lista de contactos en LocalStorage
- * @param {Array} contactos
- */
+const LOCAL_STORAGE_KEY = "agenda_telefonica";
+
 function saveContactsToStorage(contactos) {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contactos));
 }
 
-/**
- * Obtiene la lista de contactos desde LocalStorage
- * @returns {Array} Lista de contactos o array vacío
- */
 function getContactsFromStorage() {
-    return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+    const data = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+    if (!data) {
+        // 🔥 clonamos para evitar modificar el original
+        const copiaInicial = [...contactosIniciales];
+
+        localStorage.setItem(
+            LOCAL_STORAGE_KEY,
+            JSON.stringify(copiaInicial)
+        );
+
+        return copiaInicial;
+    }
+
+    return JSON.parse(data);
 }
 
 export { LOCAL_STORAGE_KEY, saveContactsToStorage, getContactsFromStorage };

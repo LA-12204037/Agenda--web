@@ -1,22 +1,22 @@
-let Button = (title, id, img) => {
-let div = document.createElement("div");
-div.id = id;
+let Button = (title, id, imgPath) => {
+    let div = document.createElement("div");
+    div.id = id;
 
-let divImage = document. createElement("div");
-divImage.className = "button-image";
+    let divImage = document.createElement("div");
+    divImage.className = "button-image";
 
-let imgIcon = document. createElement("img");
- imgIcon.src = `./assets/icon/${img}`;
-divImage.appendChild(imgIcon);
+    let imgIcon = document.createElement("img");
+    imgIcon.src = imgPath; // ✅ NO modificar la ruta
+    imgIcon.alt = title;
 
-let p = document.createElement("p");
-p.className = "button-text";
-p.textContent = title;
+    divImage.appendChild(imgIcon);
 
-div.appendChild(divImage);
-div.appendChild(p);
+    let p = document.createElement("p");
+    p.className = "button-text";
+    p.textContent = title;
 
-return div;
-}
+    div.append(divImage, p);
+    return div;
+};
+
 export { Button };
-

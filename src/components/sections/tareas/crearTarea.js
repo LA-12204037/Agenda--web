@@ -1,16 +1,19 @@
 import { guardarTarea, obtenerTarea } from "../localStorage/tareaStorage.js";
+import { ToDoList } from "../toDoList/toDoList.js";
 
-
-function CrearTarea() {
+function CrearTarea(tarea = null, index = null) {
     const form = document.createElement("form");
     form.className = "form-tarea";
 
+    // 📝 Nombre
     const inputNombre = document.createElement("input");
     inputNombre.type = "text";
     inputNombre.placeholder = "Nombre de la tarea";
     inputNombre.required = true;
 
+    // ⚡ Prioridad
     const selectPrioridad = document.createElement("select");
+
     const optionUrgente = document.createElement("option");
     optionUrgente.value = "Urgente";
     optionUrgente.textContent = "Urgente";
@@ -21,27 +24,50 @@ function CrearTarea() {
 
     selectPrioridad.append(optionUrgente, optionTiempo);
 
-    const btnGuardar = document.createElement("button");
-    btnGuardar.textContent = "Guardar tarea";
-    btnGuardar.type = "submit";
+    // 📅 Fecha de vencimiento
+    const inputFecha = document.createElement("input");
+    inputFecha.type = "date";
+    inputFecha.required = true;
 
-    form.append(inputNombre, selectPrioridad, btnGuardar);
+    // 💾 Botón
+    const btnGuardar = document.createElement("button");
+    btnGuardar.type = "submit";
+    btnGuardar.textContent = tarea ? "Actualizar tarea" : "Guardar tarea";
+
+    // 🔄 Si estamos editando → cargar datos
+    if (tarea) {
+        inputNombre.value = tarea.nombre;
+        selectPrioridad.value = tarea.prioridad;
+        inputFecha.value = tarea.vencimiento;
+    }
+
+    form.append(inputNombre, selectPrioridad, inputFecha, btnGuardar);
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
         let tareas = obtenerTarea();
 
-        tareas.push({
+        const nuevaTarea = {
             nombre: inputNombre.value,
-            prioridad: selectPrioridad.value
-        });
+            prioridad: selectPrioridad.value,
+            vencimiento: inputFecha.value
+        };
+
+        if (tarea && index !== null) {
+            // ✏️ EDITAR
+            tareas[index] = nuevaTarea;
+        } else {
+            // ➕ CREAR
+            tareas.push(nuevaTarea);
+        }
 
         guardarTarea(tareas);
 
-        alert("Tarea guardada ");
-
-        form.reset();
+        // 🔁 VOLVER A LA LISTA
+        const container = document.getElementById("container");
+        container.innerHTML = "";
+        container.appendChild(ToDoList());
     });
 
     return form;

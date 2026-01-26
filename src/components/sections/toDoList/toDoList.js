@@ -1,4 +1,5 @@
-import { obtenerTarea , guardarTarea  } from "../localStorage/tareaStorage.js";
+import { obtenerTarea, guardarTarea } from "../localStorage/tareaStorage.js";
+import { CrearTarea } from "../tareas/crearTarea.js";
 
 function ToDoList() {
     const section = document.createElement("section");
@@ -20,28 +21,42 @@ function ToDoList() {
         const nombre = document.createElement("strong");
         nombre.textContent = tarea.nombre;
 
+        const fecha = document.createElement("span");
+        fecha.textContent = `📅 ${tarea.vencimiento}`;
+
         const prioridad = document.createElement("span");
         prioridad.textContent = tarea.prioridad;
 
+        // ✏️ EDITAR
+        const btnEditar = document.createElement("button");
+        btnEditar.textContent = "✏️";
+        btnEditar.onclick = () => {
+            const container = document.getElementById("container");
+            container.innerHTML = "";
+            container.appendChild(CrearTarea(tarea, index));
+        };
+
+        // 🗑 BORRAR
         const btnBorrar = document.createElement("button");
         btnBorrar.textContent = "Borrar";
-        btnBorrar.disabled = true;
         btnBorrar.className = "btn-borrar";
+        btnBorrar.disabled = true;
 
-        checkbox.addEventListener("change", () => {
+        checkbox.onchange = () => {
             btnBorrar.disabled = !checkbox.checked;
             div.classList.toggle("seleccionada", checkbox.checked);
-        });
+        };
 
-        btnBorrar.addEventListener("click", () => {
+        btnBorrar.onclick = () => {
             tareas.splice(index, 1);
             guardarTarea(tareas);
 
             const container = document.getElementById("container");
+            container.innerHTML = "";
             container.appendChild(ToDoList());
-        });
+        };
 
-        div.append(checkbox, nombre, prioridad, btnBorrar);
+        div.append(checkbox, nombre, fecha, prioridad, btnEditar, btnBorrar);
         section.appendChild(div);
     });
 

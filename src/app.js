@@ -1,71 +1,73 @@
 import { Button } from "./components/common/button/Button.js";
 import { Contactos } from "./components/sections/login/Contactos/Contactos.js";
- import { FormContacto  } from "./components/sections/NewContact.js";
-import { ToDoList   } from "./components/sections/toDoList/toDoList.js";
-import { CrearTarea   } from "./components/sections/tareas/crearTarea.js";
-
-
+import { Favoritos } from "./components/sections/login/Favoritos/Favoritos.js";
+import { FormContacto } from "./components/sections/NewContact.js";
+import { ToDoList } from "./components/sections/toDoList/toDoList.js";
+import { CrearTarea } from "./components/sections/tareas/crearTarea.js";
+import { Login } from "./components/sections/login/login.js";
+import { UsuariosLogeados } from "./components/sections/login/UsuariosLogeados.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    // App
-    let app = document.getElementById("app");
 
-    // section menú
-    let nav = document.getElementById("nav");
+    const app = document.getElementById("app");
+    const nav = document.getElementById("nav");
+    const container = document.getElementById("container");
 
-    // Crear botones
-    nav.appendChild(Button("Agenda", "agenda", "user.svg.svg"));
-    nav.appendChild(Button("Crear contacto", "crear-contacto", "plus.svg"));
-    nav.appendChild(Button("ToDoList", "todoList", "todoList.svg"));
-    nav.appendChild(Button("Crear tarea", "crear-tarea", "agenda.svg"));
+    /* =========================
+       LOGIN INICIAL
+    ========================= */
+    app.classList.add("app-login");
+    mostrarSeccion(Login(iniciarSesion));
 
-    // Contenedor principal
-    let container = document.getElementById("container");
-    container.appendChild(Contactos());
+    function iniciarSesion(usuario) {
+        // Usuario actual
+        localStorage.setItem("usuario", usuario);
 
-    // Función para cambiar secciones
+        // Guardar historial de usuarios logeados
+        const usuarios = JSON.parse(localStorage.getItem("usuariosLogeados")) || [];
+        usuarios.push({
+            nombre: usuario,
+            fecha: new Date().toLocaleString()
+        });
+        localStorage.setItem("usuariosLogeados", JSON.stringify(usuarios));
+
+        // Salir modo login
+        app.classList.remove("app-login");
+
+        // Cargar menú
+        cargarMenu();
+
+        // Vista inicial
+        mostrarSeccion(Contactos());
+    }
+
+    /* =========================
+       MENÚ
+    ========================= */
+    function cargarMenu() {
+        nav.innerHTML = "";
+
+        nav.appendChild(Button("Agenda", "agenda", "./src/assets/icon/user2.svg"));
+        nav.appendChild(Button("Favoritos", "favoritos", "./src/assets/icon/star.svg"));
+        nav.appendChild(Button("Crear contacto", "crear-contacto", "./src/assets/icon/plus.svg"));
+        nav.appendChild(Button("ToDoList", "todoList", "./src/assets/icon/todoList.svg"));
+        nav.appendChild(Button("Crear tarea", "crear-tarea", "./src/assets/icon/agenda.svg"));
+        nav.appendChild(Button("Usuarios", "usuarios", "./src/assets/icon/users.svg"));
+
+        document.getElementById("agenda").onclick = () => mostrarSeccion(Contactos());
+        document.getElementById("favoritos").onclick = () => mostrarSeccion(Favoritos());
+        document.getElementById("crear-contacto").onclick = () => mostrarSeccion(FormContacto());
+        document.getElementById("todoList").onclick = () => mostrarSeccion(ToDoList());
+        document.getElementById("crear-tarea").onclick = () => mostrarSeccion(CrearTarea());
+        document.getElementById("usuarios").onclick = () => mostrarSeccion(UsuariosLogeados());
+    }
+
+    /* =========================
+       CAMBIO DE VISTAS
+    ========================= */
     function mostrarSeccion(seccion) {
         container.innerHTML = "";
         container.appendChild(seccion);
     }
 
-    // Eventos de botones
-    document.getElementById("agenda").addEventListener("click", () => {
-        mostrarSeccion(Contactos());
-    });
-
-    document.getElementById("crear-contacto").addEventListener("click", () => {
-        mostrarSeccion(FormContacto());
-    });
-
-    document.getElementById("todoList").addEventListener("click", () => {
-        mostrarSeccion(ToDoList());
-    });
-
-    document.getElementById("crear-tarea").addEventListener("click", () => {
-        mostrarSeccion(CrearTarea());
-    });
-    
-
 });
-
-
-
-/*async function tarea() {
-
-  try {
-    let data = await fetch ("https://jsonplaceholder.typicode.com/posts");
-    let r = await data.json();
-    console.log(r);
-
-  } catch (error) {
-    console.log(error);
-
-  }
-  
-}
-
-tarea();
-
-console.log("Comletado");
-*/

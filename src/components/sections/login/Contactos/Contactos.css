@@ -1,53 +1,120 @@
 .contactos {
+    width: 100%;
+    max-width: 600px;
+
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    width: 100%;
+    gap: 14px;
 }
 
 .contactos h2 {
-    font-size: 22px;
-    color: #fff;
+    color: black;
+    margin-bottom: 10px;
 }
 
+/* =========================
+   FILA DE CONTACTO
+========================= */
 .fila-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    padding: 14px;
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.55);
+
+    /* soporte Safari */
+    -webkit-backdrop-filter: blur(10px);
+
+    /* navegadores modernos */
+    backdrop-filter: blur(10px);
+}
+
+/* =========================
+   PARTE SUPERIOR
+========================= */
+.fila-superior {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 18px;
-    background: rgba(255,255,255,0.9);
-    border-radius: 14px;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-    transition: transform 0.2s, box-shadow 0.2s;
+    gap: 10px;
 }
 
-.fila-contacto:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-}
-
+/* =========================
+   ACCIONES
+========================= */
 .acciones-contacto {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
+/* =========================
+   BOTÓN BORRAR
+========================= */
 .btn-borrar {
-    padding: 6px 12px;
-    border-radius: 8px;
+    padding: 6px 10px;
     border: none;
-    background: #e63946;
+    border-radius: 8px;
+
+    background: rgba(255, 80, 80, 0.8);
     color: white;
     cursor: pointer;
-    opacity: 0.7;
 }
 
 .btn-borrar:disabled {
-    opacity: 0.3;
+    opacity: 0.4;
     cursor: not-allowed;
 }
 
-.fila-contacto.seleccionado {
-    opacity: 0.6;
-    text-decoration: line-through;
+/* =========================
+   SELECCIÓN
+========================= */
+.seleccionado {
+    outline: 2px solid rgba(255,255,255,0.5);
+}
+
+/* =========================
+   FAVORITO
+========================= */
+.btn-fav {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* =========================
+   BOTÓN INFO / MENÚ
+========================= */
+.btn-info,
+.btn-menu {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* =========================
+   PANEL DE INFORMACIÓN
+========================= */
+.detalles-contacto {
+    display: none;
+
+    padding: 12px;
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.65);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    font-size: 14px;
+    color: #111;
+}
+
+/* CUANDO ESTÁ ABIERTO */
+.detalles-contacto.activo {
+    display: block;
 }

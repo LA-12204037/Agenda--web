@@ -1,57 +1,39 @@
-/* Contenedor del contacto */
 .item-contacto {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
 
-    width: 100%;
+    padding: 14px 18px;
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.2);
+    color: black;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    animation: fadeIn 0.4s ease forwards;
 }
 
-/* Icono */
 .item-contacto img {
     width: 42px;
     height: 42px;
-    object-fit: contain;
-
-    padding: 8px;
-    border-radius: 10px;
-
-    background: rgba(102, 126, 234, 0.15);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    padding: 6px;
 }
 
-/* Info del contacto */
-.item-contacto .info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-/* Nombre */
-.item-contacto .info strong {
+.item-contacto p {
     font-size: 15px;
-    font-weight: 600;
-    color: #333;
 }
 
-/* Teléfono */
-.item-contacto .info span {
-    font-size: 13px;
-    color: #555;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-    .item-contacto img {
-        width: 36px;
-        height: 36px;
-        padding: 6px;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
     }
-
-    .item-contacto .info strong {
-        font-size: 14px;
-    }
-
-    .item-contacto .info span {
-        font-size: 12px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

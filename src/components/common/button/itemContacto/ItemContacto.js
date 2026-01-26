@@ -1,22 +1,19 @@
-let ItemContacto = (imgContacto, nombre, telefono ) => {
-let div = document.createElement("div");
-div.className = "item-contacto";
+let ItemContacto = (imgPath, nombre, telefono) => {
+    let div = document.createElement("div");
+    div.className = "item-contacto";
 
-let etiquetaImg = document.createElement("img");
- etiquetaImg.src = `./assets/icon/${imgContacto}`;;
+    let etiquetaImg = document.createElement("img");
+    etiquetaImg.src = imgPath; // ✅ ruta directa
+    etiquetaImg.alt = nombre;
 
-let etiquetaNombre = document.createElement("p");
-etiquetaNombre. textContent = nombre;
+    let etiquetaNombre = document.createElement("p");
+    etiquetaNombre.textContent = nombre;
 
-let etiquetaTelefono = document.createElement("p");
-etiquetaTelefono.textContent = telefono;
+    let etiquetaTelefono = document.createElement("p");
+    etiquetaTelefono.textContent = telefono;
 
-div.appendChild(etiquetaImg);
-div.appendChild(etiquetaNombre);
-div.appendChild(etiquetaTelefono);
-
-return div;
-
+    div.append(etiquetaImg, etiquetaNombre, etiquetaTelefono);
+    return div;
 };
 
 export { ItemContacto };
