@@ -16,7 +16,6 @@
     display: grid;
     grid-template-columns: 260px 1fr;
 
-    /* FONDO GLOBAL */
     background-image: url("./assets/icon/bg.jpg");
     background-size: cover;
     background-position: center;
@@ -39,8 +38,8 @@
     border-radius: 10px;
 
     background: rgba(255,255,255,0.65);
-    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
     font-size: 14px;
 }
@@ -68,8 +67,8 @@
 #nav {
     padding: 20px;
     background: rgba(255, 255, 255, 0.35);
-    -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 
     display: flex;
     flex-direction: column;
@@ -99,8 +98,8 @@
     padding: 28px;
 
     background: rgba(255, 255, 255, 0.6);
-    -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 
     border-radius: 20px;
     border: 1px solid rgba(0, 0, 0, 0.15);
@@ -167,12 +166,14 @@
 }
 
 /* =========================
-   RESPONSIVE 📱
+   RESPONSIVE CELULAR 📱
 ========================= */
 @media (max-width: 768px) {
 
+    /* APP EN UNA COLUMNA */
     #app {
         grid-template-columns: 1fr;
+        min-height: 100vh;
     }
 
     /* NAV ABAJO */
@@ -185,67 +186,11 @@
         bottom: 0;
         z-index: 10;
 
-        border-right: none;
-        border-bottom: none;
-        border-top: 1px solid rgba(0,0,0,0.15);
-    }
-
-    #container {
-        padding: 16px;
-        align-items: stretch;
-    }
-
-    .glass-card {
-        max-width: 100%;
-        padding: 20px;
-    }
-
-    /* ===== TO DO LIST ===== */
-    .tarea {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-
-        padding: 12px;
-        border-radius: 12px;
-
-        background: rgba(255,255,255,0.6);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-    }
-
-    .tarea.vencida {
-        border-left: 6px solid red;
-        background: rgba(255, 0, 0, 0.08);
-    }
-
-    .tarea.completada {
-        text-decoration: line-through;
-        opacity: 0.6;
-    }
-
-    /* =========================
-   RESPONSIVE CELULAR
-========================= */
-@media (max-width: 768px) {
-
-    /* APP EN UNA COLUMNA */
-    #app {
-        grid-template-columns: 1fr;
-        min-height: 100vh;
-    }
-
-    /* NAV ARRIBA */
-    #nav {
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-
         padding: 12px;
         gap: 8px;
 
         border-right: none;
-        border-bottom: 1px solid rgba(0,0,0,0.15);
+        border-top: 1px solid rgba(0,0,0,0.15);
     }
 
     /* CONTENEDOR */
@@ -257,14 +202,11 @@
     /* TARJETAS */
     .glass-card {
         max-width: 100%;
+        padding: 20px;
     }
 
     /* CONTACTOS */
-    .fila-contacto {
-        width: 100%;
-    }
-
-    /* ITEM CONTACTO */
+    .fila-contacto,
     .item-contacto {
         width: 100%;
     }
@@ -275,6 +217,4 @@
         align-items: flex-start;
         gap: 6px;
     }
-}
-
 }
