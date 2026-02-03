@@ -47,12 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
     function cargarMenu() {
         nav.innerHTML = "";
 
-        nav.appendChild(Button("Agenda", "agenda", "./src/assets/icon/user2.svg"));
-        nav.appendChild(Button("Favoritos", "favoritos", "./src/assets/icon/star.svg"));
-        nav.appendChild(Button("Crear contacto", "crear-contacto", "./src/assets/icon/plus.svg"));
-        nav.appendChild(Button("ToDoList", "todoList", "./src/assets/icon/todoList.svg"));
-        nav.appendChild(Button("Crear tarea", "crear-tarea", "./src/assets/icon/agenda.svg"));
-        nav.appendChild(Button("Usuarios", "usuarios", "./src/assets/icon/users.svg"));
+        nav.appendChild(Button("Agenda", "agenda", "./assets/icon/user2.svg"));
+        nav.appendChild(Button("Favoritos", "favoritos", "./assets/icon/star.svg"));
+        nav.appendChild(Button("Crear contacto", "crear-contacto", "./assets/icon/plus.svg"));
+        nav.appendChild(Button("ToDoList", "todoList", "./assets/icon/todoList.svg"));
+        nav.appendChild(Button("Crear tarea", "crear-tarea", "./assets/icon/agenda.svg"));
+        nav.appendChild(Button("Usuarios", "usuarios", "./assets/icon/users.svg"));
 
         document.getElementById("agenda").onclick = () => mostrarSeccion(Contactos());
         document.getElementById("favoritos").onclick = () => mostrarSeccion(Favoritos());
